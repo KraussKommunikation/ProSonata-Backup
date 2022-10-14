@@ -43,8 +43,8 @@ It has been tested with PHP 8.0, it may work with newer versions as well. It's r
 
 1. Clone this repository or download the source code via GitHub.
 1. Copy `config.example.php` to `config.php` and configure your workspace:
-  1. Specify the ProSonata URL (e.g. https://yourcompany.prosonata.software)
-  1. Create a new custom integration with your ProSonata Admin Account and add the appID and apiKey to the config
+   1. Specify the ProSonata URL (e.g. https://yourcompany.prosonata.software)
+   1. Create a new custom integration with your ProSonata Admin Account and add the appID and apiKey to the config
 1. Create a folder called `archives`. If you want to use a different folder, customize it in `config.php`
 
 ## Create a Backup
