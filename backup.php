@@ -42,7 +42,7 @@ $started = time();
 foreach($endpoints as $endpoint => $lastPage)
 {
     $totalAmount = 0;
-    $perPage = 100;
+    $perPage = 1000;
     $totalPages = $lastPage + 1;
 
     $rowCount = 0;
@@ -123,6 +123,8 @@ foreach($endpoints as $endpoint => $lastPage)
 
         $statusUpdate = $database->prepare("UPDATE backupinfo SET pageNum = ? WHERE endpoint = ?");
         $statusUpdate->execute([$currentPage, $endpoint]);
+
+        sleep(5);
     }
 
     echo "Added " . $rowCount . " rows" . PHP_EOL;
@@ -143,6 +145,8 @@ foreach($endpoints as $endpoint => $lastPage)
     $statusUpdate->execute([1, $endpoint]);
 
     echo "Archived " . $endpoint . PHP_EOL;
+
+    sleep(20);
 }
 
 $database = null;
