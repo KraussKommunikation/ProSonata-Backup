@@ -12,17 +12,33 @@ $filename = ARCHIVE_FOLDER . date("Y-m-d-H-i") . "-archive.sql";
 // Check latest archive for endpoints that haven't been
 // fully copied yet
 $archives = [];
+$lastBackup = 0;
 foreach (glob(ARCHIVE_FOLDER . "*-archive.sql") as $existingArchive) {
     $archives[] = $existingArchive;
+    [$year, $month, $day, $hour, $minute] = explode("-", basename($existingArchive));
+    $timestamp = strtotime("${year}-${month}-${day} ${hour}:${minute}");
+    if($lastBackup < $timestamp) $lastBackup = $timestamp;
 }
 rsort($archives);
 
+$createNewBackup = true;
 if(count($archives) > 0) {
     $lastArchiveEndpoints = getEndpointList($archives[0]);
     if(count(array_keys($lastArchiveEndpoints)) > 0) {
         echo "Resuming backup..." . PHP_EOL;
         $filename = $archives[0];
         $endpoints = $lastArchiveEndpoints;
+        $createNewBackup = false;
+    }
+}
+
+// Limit amount of backups
+if($createNewBackup)
+{
+    $hoursSinceLastBackup = floor((time() - $lastBackup) / 3600);
+    if($hoursSinceLastBackup <= 24)
+    {
+        die("Last backup less than 24 hours ago (" . date("Y-m-d H:i") . "), nothing to do.");
     }
 }
 
