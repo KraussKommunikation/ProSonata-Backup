@@ -212,6 +212,7 @@ function getEndpoints()
         "projecttimecategories" => 0,
         "users" => 0,
         "workingtimes" => 0,
+        "crmevents" => 0,
     ];
 }
 
