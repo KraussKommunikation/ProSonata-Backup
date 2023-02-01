@@ -102,8 +102,8 @@ foreach($endpoints as $endpoint => $lastPage)
 
         if($isFirstRun)
         {
-            $totalAmount = $result["meta"]["totalCount"];
-            $perPage = $result["meta"]["perPage"];
+            $totalAmount = $result["meta"]["totalCount"] ?? 0;
+            $perPage = $result["meta"]["perPage"] ?? 0;
             $totalPages = $totalAmount === 0 ? 0 : ceil($totalAmount / $perPage);
         }
         $isFirstRun = false;
