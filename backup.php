@@ -36,7 +36,7 @@ if(count($archives) > 0) {
 if($createNewBackup)
 {
     $hoursSinceLastBackup = floor((time() - $lastBackup) / 3600);
-    if($hoursSinceLastBackup <= 24)
+    if($hoursSinceLastBackup < 24)
     {
         die("Last backup less than 24 hours ago (" . date("Y-m-d H:i") . "), nothing to do.");
     }
