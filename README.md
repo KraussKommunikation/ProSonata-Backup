@@ -14,6 +14,8 @@ This tool creates a backup of all important data on your ProSonata workspace.
 - projecttimes
 - users
 - workingtimes
+- crmevents
+- invoices
 
 ## Security & Privacy
 

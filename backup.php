@@ -213,6 +213,7 @@ function getEndpoints()
         "users" => 0,
         "workingtimes" => 0,
         "crmevents" => 0,
+        "invoices" => 0,
     ];
 }
 
